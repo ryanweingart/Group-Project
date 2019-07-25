@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -196,5 +197,44 @@
 
     <!-- footer -->
     <footer>This is a footer</footer>
+    <script>
+        
+        var school = "atlanta";
+       
+
+
+         var queryURL = `https://api.data.gov/ed/collegescorecard/v1/schools/nearest.json?api_key=HNg7UV31G0EyV08Fh2zkZBi1WNM1XffC3ttbfbw5&school.city=${school}&_per_page=100`;
+
+
+
+    $.ajax({
+      url: queryURL,
+      method: "GET",
+      meta: {
+        page: 1
+      }
+    }).then((response)=>{
+        console.log(response);
+        
+    });
+
+    10// I would like to see my schools URL
+    278 // I would like to see the admission rate 
+   206 //1. Do you want to attend an all mens school? 
+   208 //2. Do you want to attend an all womens school?
+    192-204 //3. Do you / You prefer to be on campus with predominately black, asian american, hispanic, or native american flags are present?
+   210 //4. Would you prefer your college to have religous affiliation? 
+   622-626 //5. Would you like to know your in-state and out-of-state tuition fees? or 2 questions "i will be in-state" or "i will be out of state"
+   1850 //6. You would like to know the average age of entry for your desired school?
+  2153 //7. Knowing how many different programs are offered is important
+  2166 //8. It is important to know how much a programs tuition, fees, books, and supply charges will cost? 
+  //"I am looking for tuition to cost less than $somedollaramount per year" or something like that.
+  2178 //9. I would like to see the average number of months needed to complete a program
+  669 or 679 //10. I want to see the first-time (retention or could be completion or both) rate for 4 year institutions
+
+
+
+        </script>
+
 </body>
 </html>

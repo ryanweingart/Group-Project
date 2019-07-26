@@ -237,14 +237,32 @@
        
 
 
-         var queryURL = `https://api.data.gov/ed/collegescorecard/v1/schools/nearest.json?api_key=HNg7UV31G0EyV08Fh2zkZBi1WNM1XffC3ttbfbw5&school.city=${school}&_per_page=100`;
+        var queryURL = `https://api.data.gov/ed/collegescorecard/v1/schools/nearest.json?api_key=HNg7UV31G0EyV08Fh2zkZBi1WNM1XffC3ttbfbw5&school.city=${school}&_per_page=100`;
 
 
 
     var filteredSchools = [];
     function getResults() {
-    //get all the form input from our quiz
-    var mensSchool = $("#menschoolinput").val(); //the jquery won't look exactly like this but this should evaluate to T/F
+    //From Jack: get all the form input from our quiz
+    var subjectMath = ("#math").val();
+    var subjectScience = ("#science").val();
+    var subjectSStudies = ("#sStudies").val();
+    var subjectLiberalArts = ("#lArts").val();
+    var mensSchool = $("#allMaleBtn").val(); //From Jack: the jquery won't look exactly like this but this should evaluate to T/F
+    var femaleSchool = $("#allFemaleBtn").val();
+    var coedSchool = $("#coEdBtn").val();
+    var religiousYes = $("#q3YesBtn").val();
+    var religiousNo = $("#q3NoBtnBtn").val();
+    var aveAgeYes = $("#q4YesBtn").val();
+    var aveAgeNo = $("#q4NoBtnBtn").val();
+    var retentionRatesYes = $("#q5YesBtn").val();
+    var retentionRatesNo = $("#q5NoBtnBtn").val();
+    var averageCostYes = $("#q6YesBtn").val();
+    var averageCostNo = $("#q6NoBtnBtn").val();
+    //need to work on question 7 buttons/id's
+    var aidYes = $("#q8YesBtn").val();
+    var aidNo = $("#q8NoBtnBtn").val();
+
 
     $.ajax({
       url: queryURL,

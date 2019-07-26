@@ -276,12 +276,123 @@
           var school = schoolObject["2017"];
           var schoolIsValid = true;
           
-          //check for mens school example
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//need correct name to be pulled from data dictionary
+          if (subjectMath === true ) {
+            if (school.men_only === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//need correct name to be pulled from data dictionary
+          if (subjectScience === true ) {
+            if (school.men_only === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//need correct name to be pulled from data dictionary
+          if (subjectSStudies === true ) {
+            if (school.men_only === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//need correct name to be pulled from data dictionary
+          if (subjectLiberalArts === true ) {
+            if (school.men_only === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+
           if (mensSchool === true ) {
             if (school.men_only === 0 ) {
               schoolIsValid = false;
             }
           }
+
+          if (femaleSchool === true ) {
+            if (school.women_only === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//need correct name to be pulled from data dictionary
+          if (coedSchool === true ) {
+            if (school.men_only === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+
+          if (religiousYes === true ) {
+            if (school.religious_affiliation === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//need correct name to be pulled from data dictionary
+          if (religiousNo === true ) {
+            if (school.men_only === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//not sure if this one is correct
+          if (aveAgeYes === true ) {
+            if (student.demographics.age_entry === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//need correct name to be pulled from data dictionary
+          if (aveAgeNo === true ) {
+            if (school.men_only === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//need correct name to be pulled from data dictionary
+          if (retentionRatesYes === true ) {
+            if (school.men_only === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//need correct name to be pulled from data dictionary
+          if (retentionRatesNo === true ) {
+            if (school.men_only === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//not sure if this one is correct
+          if (averageCostYes === true ) {
+            if (cost.program_reporter.program_1.cip_6_digit.full_program === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//need correct name to be pulled from data dictionary
+          if (averageCostNo === true ) {
+            if (school.men_only === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//need correct name to be pulled from data dictionary
+          if (aidYes === true ) {
+            if (school.men_only === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//need correct name to be pulled from data dictionary
+          if (aidNo === true ) {
+            if (school.men_only === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+
           //^^we need a lot more of these but they will follow the same structure
 
           

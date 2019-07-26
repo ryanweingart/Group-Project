@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Find Your Fit</title>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
     <!-- navbar -->
@@ -229,6 +231,91 @@
     
     <!-- footer -->
     <footer>This is a footer</footer>
+    <script>
+  
+        var school = "atlanta";
+       
+
+
+         var queryURL = `https://api.data.gov/ed/collegescorecard/v1/schools/nearest.json?api_key=HNg7UV31G0EyV08Fh2zkZBi1WNM1XffC3ttbfbw5&school.city=${school}&_per_page=100`;
+
+
+
+    var filteredSchools = [];
+    function getResults() {
+    //get all the form input from our quiz
+    var mensSchool = $("#menschoolinput").val(); //the jquery won't look exactly like this but this should evaluate to T/F
+
+    $.ajax({
+      url: queryURL,
+      method: "GET",
+      meta: {
+        page: 1
+      }
+    }).then((response)=>{
+        console.log(response);
+        response.results.forEach(function(schoolObject) {
+          var school = schoolObject["2017"];
+          var schoolIsValid = true;
+          
+          //check for mens school example
+          if (mensSchool === true ) {
+            if (school.men_only === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+          //^^we need a lot more of these but they will follow the same structure
+
+          
+
+
+          //after we've done all of our filtering...
+          if (schoolIsValid) {
+            filteredSchools.push(school);
+          }
+
+        })
+
+        //once we have filtered schoools...
+        for (var i = 0; i < filteredSchools.length; i++) {
+          //create a "repeating element" for each filtered school with jquery
+        }
+        
+    });
+
+    }
+    //10// I would like to see my schools URL   x
+   // 278 // I would like to see the admission rate x
+
+   //206 //1. Do you want to attend an all mens school? 1
+   //208 //2. Do you want to attend an all womens school? 2
+   // 192-204 //3. Do you / You prefer to be on campus with predominately black, asian american, hispanic, or native american flags are present? 
+
+   //210 //4. Would you prefer your college to have religous affiliation? 3
+
+   //622-626 //5. Would you like to know your in-state and out-of-state tuition fees? or 2 questions "i will be in-state" or "i will be out of state"   x
+
+  // 1850 //6. You would like to know the average age of entry for your desired school?
+
+  //2153 //7. Knowing how many different programs are offered is important
+  //2166 //8. It is important to know how much a programs tuition, fees, books, and supply charges will cost? 
+  //"I am looking for tuition to cost less than $somedollaramount per year" or something like that.
+
+  //2178 //9. I would like to see the average number of months needed to complete a program
+  //669 or 679 //10. I want to see the first-time (retention or could be completion or both) rate for 4 year institutions
+
+  2178 //9. I would like to see the average number of months needed to complete a program
+//   669 or 679 //10. I want to see the first-time (retention or could be completion or both) rate for 4 year institutions
+
+
+  //what is your maximum tution price? 
+  //--12,000
+
+
+        </script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 <script>
     var qa1 = "";

@@ -346,9 +346,9 @@
      crossorigin="anonymous"></script>
      <script>
          
-         var city = "atlanta";
+         var cityn = "atlanta";
          var subject = "mathematics";
-          var queryURL = `https://api.data.gov/ed/collegescorecard/v1/schools/nearest.json?api_key=HNg7UV31G0EyV08Fh2zkZBi1WNM1XffC3ttbfbw5&school.city=${city}&2017.academics.program.bachelors.${subject}=1`;
+          var queryURL = `https://api.data.gov/ed/collegescorecard/v1/schools/nearest.json?api_key=HNg7UV31G0EyV08Fh2zkZBi1WNM1XffC3ttbfbw5&school.city=${cityn}&2017.academics.program.bachelors.${subject}=1`;
  
        
  
@@ -362,8 +362,12 @@
            var school
            console.log(response.results[i].school.name);
            var Schoolname = response.results[i].school.name;
-           console.log(response.results[i].school.city);
-           console.log(response.results[i].school.state);
+        //    console.log(response.results[i].school.city);
+           var SchoolCSZ = response.results[i].school.city+", "+response.results[i].school.state+" "+response.results[i].school.zip;
+        //    console.log(response.results[i].school.state);
+           console.log(SchoolCSZ);
+        //    var SchoolDebtAvg = response.results[i].latest.aid.cumulative_debt.90th_percentile;
+           console.log(SchoolDebtAvg);
          };
  
      });

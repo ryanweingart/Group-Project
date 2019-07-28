@@ -7,9 +7,20 @@
     <title>Find My Fit</title>
 
     <!-- bootstrap main cdn-->
+        <!-- jquery cdn-->
+    <script
+     src="https://code.jquery.com/jquery-3.4.1.min.js"
+     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+     crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>   
+    <!-- bootstrap javascript support cdn-->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- developer stylesheet -->
     <link rel="stylesheet" type="text/css" href="assets/css/style1.css">
+    <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-firestore.js"></script>
+
 </head>
 
 <body>
@@ -78,7 +89,8 @@
                     <!-- q3 checkboxes -->
                     <div class="btn-group mr-2" role="group" aria-label="First group">
                         <div id="q3YesBtn"><input type="checkbox" value=1 class="checkbox">Yes</input></div>
-                        <div id="q3NoBtnBtn"><input type="checkbox" value=2 class="checkbox">No</input></div>
+
+                        <div id="q3NoBtn"><input type="checkbox" value=2 class="checkbox">No</input></div>
                     </div>
                 </div> <!-- q3 end -->
                     
@@ -87,7 +99,8 @@
 
                     <div class="btn-group mr-2" role="group" aria-label="First group">
                         <div id="q4YesBtn"><input type="checkbox" value=1 class="checkbox">Yes</input></div>
-                        <div id="q4NoBtnBtn"><input type="checkbox" value=2 class="checkbox">No</input></div>
+
+                        <div id="q4NoBtn"><input type="checkbox" value=2 class="checkbox">No</input></div>
                     </div>
                 </div> <!-- q4 end -->
 
@@ -96,7 +109,8 @@
                     <!-- q5 checkboxes -->
                     <div class="btn-group mr-2" role="group" aria-label="First group">
                         <div id="q5YesBtn"><input type="checkbox" value=1 class="checkbox">Yes</input></div>
-                        <div id="q5NoBtnBtn"><input type="checkbox" value=2 class="checkbox">No</input></div>
+
+                        <div id="q5NoBtn"><input type="checkbox" value=2 class="checkbox">No</input></div>
                     </div>
                 </div> <!-- q5 end -->
 
@@ -110,7 +124,8 @@
                 <!-- q6 checkboxes -->
                 <div class="btn-group mr-2" role="group" aria-label="First group">
                     <div id="q6YesBtn"><input type="checkbox" value=1 class="checkbox">Yes</input></div>
-                    <div id="q6NoBtnBtn"><input type="checkbox" value=2 class="checkbox">No</input></div>
+
+                    <div id="q6NoBtn"><input type="checkbox" value=2 class="checkbox">No</input></div>
                 </div>
             </div> <!-- q6 end -->
 
@@ -118,12 +133,13 @@
             <div class="questions" id="q7"> How much are you willing/expecting to pay in tuition per year? Choose ONE from the options below.
                     <!-- q7 checkboxes -->
                 <div class="btn-group mr-2" role="group" aria-label="First group">
-                    <div id="q3YesBtn"><input type="checkbox" value=1 class="checkbox">1</input></div>
-                    <div id="q3NoBtnBtn"><input type="checkbox" value=2 class="checkbox">2</input></div>
-                    <div id="q3YesBtn"><input type="checkbox" value=3 class="checkbox">3</input></div>
-                    <div id="q3NoBtnBtn"><input type="checkbox" value=4 class="checkbox">4</input></div>
-                    <div id="q3YesBtn"><input type="checkbox" value=5 class="checkbox">5</input></div>
-                    <div id="q3NoBtnBtn"><input type="checkbox" value=6 class="checkbox">6</input></div>
+
+                    <div id="q7YesBtn"><input type="checkbox" value=1 class="checkbox">1</input></div>
+                    <div id="q7NoBtn"><input type="checkbox" value=2 class="checkbox">2</input></div>
+                    <div id="q7YesBtn"><input type="checkbox" value=3 class="checkbox">3</input></div>
+                    <div id="q7NoBtn"><input type="checkbox" value=4 class="checkbox">4</input></div>
+                    <div id="q7YesBtn"><input type="checkbox" value=5 class="checkbox">5</input></div>
+                    <div id="q7NoBtn"><input type="checkbox" value=6 class="checkbox">6</input></div>
                 </div>
             </div> <!-- q7 end -->
 
@@ -132,7 +148,8 @@
                 <!-- q8 checkboxes -->
                 <div class="btn-group mr-2" role="group" aria-label="First group">
                     <div id="q8YesBtn"><input type="checkbox" value=1 class="checkbox">Yes</input></div>
-                    <div id="q8NoBtnBtn"><input type="checkbox" value=2 class="checkbox">No</input></div>
+
+                    <div id="q8NoBtn"><input type="checkbox" value=2 class="checkbox">No</input></div>
                 </div>
             </div> <!-- q8 end -->
             
@@ -157,19 +174,218 @@
         <p>Find My Fit uses third party resources including APIs and developer libraries and databases to source and provide user/developer data.</p>
         <p>Updated By: Find My Fit 2019</p>
     </footer>
+   
+    <!-- footer -->
+    <footer>This is a footer</footer>
+    <script>
+  
+        var school = "atlanta";
+       
 
-    <!-- firebase cdns -->
-    <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-firestore.js"></script>
-    
-    <!-- jquery cdn-->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    
-    <!-- ajax cdn-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    
-    <!-- bootstrap javascript support cdn-->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        var queryURL = `https://api.data.gov/ed/collegescorecard/v1/schools/nearest.json?api_key=HNg7UV31G0EyV08Fh2zkZBi1WNM1XffC3ttbfbw5&school.city=${school}&_per_page=100`;
+
+
+
+    var filteredSchools = [];
+    function getResults() {
+    //From Jack: get all the form input from our quiz
+    var subjectMath = ("#math").val();
+    var subjectScience = ("#science").val();
+    var subjectSStudies = ("#sStudies").val();
+    var subjectLiberalArts = ("#lArts").val();
+    var mensSchool = $("#allMaleBtn").val(); //From Jack: the jquery won't look exactly like this but this should evaluate to T/F
+    var femaleSchool = $("#allFemaleBtn").val();
+    var coedSchool = $("#coEdBtn").val();
+    var religiousYes = $("#q3YesBtn").val();
+    var religiousNo = $("#q3NoBtn").val();
+    var aveAgeYes = $("#q4YesBtn").val();
+    var aveAgeNo = $("#q4NoBtn").val();
+    var retentionRatesYes = $("#q5YesBtn").val();
+    var retentionRatesNo = $("#q5NoBtn").val();
+    var averageCostYes = $("#q6YesBtn").val();
+    var averageCostNo = $("#q6NoBtn").val();
+    //need to work on question 7 buttons/id's
+    var aidYes = $("#q8YesBtn").val();
+    var aidNo = $("#q8NoBtn").val();
+
+
+    $.ajax({
+      url: queryURL,
+      method: "GET",
+      meta: {
+        page: 1
+      }
+    }).then((response)=>{
+        console.log(response);
+        response.results.forEach(function(schoolObject) {
+          var school = schoolObject["2017"];
+          var schoolIsValid = true;
+          
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//need correct name to be pulled from data dictionary
+          if (subjectMath === true ) {
+            if (school.men_only === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//need correct name to be pulled from data dictionary
+          if (subjectScience === true ) {
+            if (school.men_only === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//need correct name to be pulled from data dictionary
+          if (subjectSStudies === true ) {
+            if (school.men_only === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//need correct name to be pulled from data dictionary
+          if (subjectLiberalArts === true ) {
+            if (school.men_only === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+
+          if (mensSchool === true ) {
+            if (school.men_only === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+
+          if (femaleSchool === true ) {
+            if (school.women_only === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//need correct name to be pulled from data dictionary
+          if (coedSchool === true ) {
+            if (school.men_only === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+
+          if (religiousYes === true ) {
+            if (school.religious_affiliation === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//need correct name to be pulled from data dictionary
+          if (religiousNo === true ) {
+            if (school.men_only === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//not sure if this one is correct
+          if (aveAgeYes === true ) {
+            if (student.demographics.age_entry === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//need correct name to be pulled from data dictionary
+          if (aveAgeNo === true ) {
+            if (school.men_only === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//need correct name to be pulled from data dictionary
+          if (retentionRatesYes === true ) {
+            if (school.men_only === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//need correct name to be pulled from data dictionary
+          if (retentionRatesNo === true ) {
+            if (school.men_only === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//not sure if this one is correct
+          if (averageCostYes === true ) {
+            if (cost.program_reporter.program_1.cip_6_digit.full_program === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//need correct name to be pulled from data dictionary
+          if (averageCostNo === true ) {
+            if (school.men_only === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//need correct name to be pulled from data dictionary
+          if (aidYes === true ) {
+            if (school.men_only === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//need correct name to be pulled from data dictionary
+          if (aidNo === true ) {
+            if (school.men_only === 0 ) {
+              schoolIsValid = false;
+            }
+          }
+
+          //^^we need a lot more of these but they will follow the same structure
+
+          
+
+
+          //after we've done all of our filtering...
+          if (schoolIsValid) {
+            filteredSchools.push(school);
+          }
+
+        })
+
+        //once we have filtered schoools...
+        for (var i = 0; i < filteredSchools.length; i++) {
+          //create a "repeating element" for each filtered school with jquery
+        }
+        
+    });
+
+    }
+    //10// I would like to see my schools URL   x
+   // 278 // I would like to see the admission rate x
+
+   //206 //1. Do you want to attend an all mens school? 1
+   //208 //2. Do you want to attend an all womens school? 2
+   // 192-204 //3. Do you / You prefer to be on campus with predominately black, asian american, hispanic, or native american flags are present? 
+
+   //210 //4. Would you prefer your college to have religous affiliation? 3
+
+   //622-626 //5. Would you like to know your in-state and out-of-state tuition fees? or 2 questions "i will be in-state" or "i will be out of state"   x
+
+  // 1850 //6. You would like to know the average age of entry for your desired school?
+
+  //2153 //7. Knowing how many different programs are offered is important
+  //2166 //8. It is important to know how much a programs tuition, fees, books, and supply charges will cost? 
+  //"I am looking for tuition to cost less than $somedollaramount per year" or something like that.
+
+  //2178 //9. I would like to see the average number of months needed to complete a program
+  //669 or 679 //10. I want to see the first-time (retention or could be completion or both) rate for 4 year institutions
+
+  2178 //9. I would like to see the average number of months needed to complete a program
+//   669 or 679 //10. I want to see the first-time (retention or could be completion or both) rate for 4 year institutions
+
+
+  //what is your maximum tution price? 
+  //--12,000
+
 
 </body>
 

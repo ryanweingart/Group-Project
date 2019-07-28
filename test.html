@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-firestore.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+        
+    <div id="userForm">User Form
+        <div id="username">Username:<form placeholder="Enter your username"></form></div>
+        <div id="currentSchool">Current School:<form placeholder="Which school do you currently attend?"></form></div>
+        <div id="schoolCity">City:<form placeholder="Which metropolitan city is your school nearest to?"></form></div>
+        <button id= "userSubmit">Submit</button>
+    </div> 
+    
+    <div id= "quiz"></div> 
+
+    <div id= "messageBoard">Message Board
+            <div id= "messages">Messages</div>
+            <div id= "chatInput">Input</div>
+    </div> 
+       
+   
+<script>
+        
+// Initializes global variables
+let userId = "";
+let username = "Lee";
+let emailAddress = "Lee@gmail.com"
+let currentSchool="Catholic Prep"; 
+let schoolCity="Atlanta"; 
+let chatMessage="Hello World"
+
+// Console.logs global variables
+console.log (username);
+console.log (emailAddress);
+console.log (currentSchool);
+console.log (chatMessages);
+
+
+//Configure/set-up Firebase
+const firebaseConfig = {
+    apiKey: "AIzaSyAn4lmtiOF9jgtIR6vdKZjCwuAeXCvm9RU",
+    authDomain: "project1-99ccf.firebaseapp.com",
+    databaseURL: "https://project1-99ccf.firebaseio.com",
+    projectId: "project1-99ccf",
+    storageBucket: "",
+    messagingSenderId: "335793893963",
+    appId: "1:335793893963:web:37d4ab7aee586790"
+};
+
+//Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+let database = firebase.database(); //Reference the database
+
+//Initializes some variables for usernames and messages
+let usersRef = firebase.database().ref("/users/");
+let currentSchoolRef = firebase.database().ref("/currentSchool/");
+let schoolCityRef = firebase.database().ref("/schoolCity/"); 
+let chatMessageRef = firebase.database().ref("/messages/");
+
+$(document).ready(function() { //Start of document ready
+
+    firebase.auth().signInAnonymously().catch(function(error) {
+        //Handles sign-in errors here
+        errorCode = error.code;
+        errorMessage = error.message;
+        console.log("THERE WAS A PROBLEM SIGNING IN. " + errorMessage + ".. " + errorCode + ". " );
+    });
+
+    //Collects the user information in a form on submit
+    $("#userSubmit").on("click", function(event){
+        event.preventDefault();//Prevents page reload before form submit
+
+        //References values using IDs
+        username=$("#username").val().trim();
+        currentSchool=$("#currentSchool").val().trim();
+        schoolCity=$("#schoolCity").val().trim();
+    });
+
+        //Pushes a user data object for each new user
+        database.ref("/users/" + userId).push({
+            username: username,
+            currentSchool: currentSchool,
+            schoolCity: schoolCity,
+        });
+
+        // $("#userForm").html("");
+        // $("#quiz").show(); // need to change according to the div ids
+        // $("#messages").empty();
+
+    //Collects the user messages
+    $("#chatInput").keypress("keypress", function(event){
+        //If not press return then ignore
+        if(event.which != "5"){
+            return;
+        }
+
+        //References input using id
+        chatText=$("#chatInput").val().trim();
+
+        //Pushes each new message to the messages div
+        database.ref("/messages/").push({
+            chatMessage: username + ": " + chatText,
+        });
+        
+        $("#chatInput").val("");
+        event.preventDefault();//Prevents page reload before form submit
+    });
+
+    //Retrieves last five messages
+    messagesRef.limitToLast(5).on("value", function(snapshot) { 
+        
+        //Empties messages
+        $("#messages").empty();
+                
+        //Adds 5 messages
+        snapshot.forEach(function(childSnapshot) {
+            $("#messages").append(`${childSnapshot.val().message} <br>`);
+        });
+    });
+});//End of document ready 
+
+    </script>
+</body>
+</html>

@@ -4,231 +4,170 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Find Your Fit</title>
+    <title>Find My Fit</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- bootstrap main cdn-->
+        <!-- jquery cdn-->
+    <script
+     src="https://code.jquery.com/jquery-3.4.1.min.js"
+     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+     crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>   
+    <!-- bootstrap javascript support cdn-->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- developer stylesheet -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style1.css">
+    <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-firestore.js"></script>
 </head>
-<body>
-    <!-- navbar -->
-    <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
-    </nav>
 
+<body>
+
+    <!-- navbar -->
+    <div id="navbar">
+        <nav class="navbar">
+            <a class="navbar-brand"><h1>Find My Fit</h1></a>
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Type search here" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id = "navSearch">Search</button>
+            </form>
+        </nav>
+    </div>
     <!-- jumbotron -->
     <div class="jumbotron">
         <h1 class="display-4">Welcome</h1>
-        <p class="lead">This jumbotron explsins our app.</p>
+        <h2 class="lead">At Find My Fit, we are dedicated to improving the way perspective students 
+            choose their next school adventure. We want to assist students of all ages and backgrounds
+            to find a school where they can follow their passion, in an environment that is appealing 
+            to their individual preferences and needs.
+        </h2>
         <hr class="my-4">
-        <p>It uses APIs to assist you in finding a school that might be a good fit for you</p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Start</a>
+        <h3>If you would like to try Find My Fit, please click on the "Start" button, below.</h3>
+        <a class="btn btn-primary btn-lg" href="#" id="startBtn" role="button">Start</a>
     </div>
     
     <!-- main container -->
-    <div class="container-wrap-wrap">
+    <div class="container-wrap-wrap" id = "main-container">
 
-        <!-- interests -->
-        <div id="interests">
-            
-            <!-- q1 -->
-            <div class="dropdown">Which of the following is a subject area you enjoy (most enjoy)?
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Sub Area (dropdown not yet working)
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" value="agriculture">Agriculture</a>
-                <a class="dropdown-item" value="architecture">Architecture</a>
-                <a class="dropdown-item" value="biological">Biology</a>
-                <a class="dropdown-item" value="business_marketing">Business Marketing</a>
-                <a class="dropdown-item" value="communication">Communication</a>
-                <a class="dropdown-item" value="communications_technology">communications Technology</a>
-                <a class="dropdown-item" value="computer">Computer Science</a>
-                <a class="dropdown-item" value="construction">Construction</a>
-                <a class="dropdown-item" value="education">Education</a>
-                <a class="dropdown-item" value="engineering">Engineering</a>
-                <a class="dropdown-item" value="engineering_technology">Engineering Technology</a>
-                <a class="dropdown-item" value="english">English</a>
-                <a class="dropdown-item" value="ethnic_cultural_gender">Ethnic Studies</a>
-                <a class="dropdown-item" value="family_consumer_science">Family Science</a>
-                <a class="dropdown-item" value="health">Health</a>
-                <a class="dropdown-item" value="history">History</a>
-                <a class="dropdown-item" value="humanities">Humanities</a>
-                <a class="dropdown-item" value="language">Language</a>
-                <a class="dropdown-item" value="legal">Legal</a>
-                <a class="dropdown-item" value="library">Library</a>
-                <a class="dropdown-item" value="mathematics">Mathematics</a>
-                <a class="dropdown-item" value="mechanic_repair_technology">Mechanic Repair Technology</a>
-                <a class="dropdown-item" value="military">Military</a>
-                <a class="dropdown-item" value="multidiscipline">Multidiscipline</a>
-                <a class="dropdown-item" value="parks_recreation_fitness">Parks & Recreation & Fitness</a>
-                <a class="dropdown-item" value="personal_culinary">Culinary</a>
-                <a class="dropdown-item" value="philosophy_religious">Philosophy & Religion</a>
-                <a class="dropdown-item" value="physical_science">Physical Science</a>
-                <a class="dropdown-item" value="precision_production">Precision Production</a>
-                <a class="dropdown-item" value="psychology">Psychology</a>
-                <a class="dropdown-item" value="public_administration_social_service">Public Administration Social Service</a>
-                <a class="dropdown-item" value="resources">Resources</a>
-                <a class="dropdown-item" value="science_technology">Science Technology</a>
-                <a class="dropdown-item" value="security_law_enforcement">Security & Law Enforcement</a>
-                <a class="dropdown-item" value="social_science">Social Science</a>
-                <a class="dropdown-item" value="theology_religious_vocation">Theology and Religious Vocation</a>
-                <a class="dropdown-item" value="transportation">Transportation</a>
-                <a class="dropdown-item" value="visual_performing">Visual Performing</a>
+        <!-- all questions -->
+        <div id= "allQuestions">
+        
+            <ol>
+            <!-- preference questions -->
+            <div id="preferences"> <h2>Preferences:</h2>
+                <li><!-- q1 start-->
+                <div class="questions" id="q1"> In which of the following subject areas are you MOST interested? Select ONE:
+                    <!-- q1 menu -->
+                    <div class="dropdown"> 
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Subject Areas
+                        </button>
+                        <!-- q1 buttons-->
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <button id="mathBtn"><a class="dropdown-item btn" id="math" value=1>Mathematics</a></button>
+                            <button id="scienceBtn"><a class="dropdown-item btn" id="science" value=2>Science</a></button>
+                            <button id="sStudiesBtn"><a class="dropdown-item btn" id="sStudies" value=3>Social Studies</a></button>
+                            <button id="lArtsBtn"><a class="dropdown-item btn" id="lArts" value=4>Language Arts</a></button>           
+                        </div>
+                    </div>
+                </div><!-- q1 end --></li>
+
+                <li><!-- q2 start -->
+                <div class="questions" id="q2"> Which of the following types of schools would you MOST prefer to attend? Select ONE:
+                    <!-- q2 checkboxes -->
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <div id="allMaleBtn"><input type="checkbox" value=1 class="checkbox">All Male</input></div>
+                        <div id="allFemaleBtn"><input type="checkbox" value=2 class="checkbox">All Female</input></div>
+                        <div id="coEdBtn"><input type="checkbox" value=3 class="checkbox">Co-Ed</input></div>
+                    </div>
+                </div> <!-- q2 end -->
+
+                <li><!-- q3 start -->
+                <div class="questions" id="q3"> Would you prefer your college to have religous affiliation? Select ONE:          
+                    <!-- q3 checkboxes -->
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <div id="q3YesBtn"><input type="checkbox" value=1 class="checkbox">Yes</input></div>
+                        <div id="q3NoBtn"><input type="checkbox" value=2 class="checkbox">No</input></div>
+                    </div>
+                </div> <!-- q3 end -->
+                    
+                <li><!-- q4 start-->
+                <div class="questions" id="q4"> Would you like to know the average age of entry for your perspective school(s)? Select ONE:
+
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <div id="q4YesBtn"><input type="checkbox" value=1 class="checkbox">Yes</input></div>
+                        <div id="q4NoBtn"><input type="checkbox" value=2 class="checkbox">No</input></div>
+                    </div>
+                </div> <!-- q4 end -->
+
+                <li><!-- q5 start-->
+                <div class="questions" id="q5"> Would you like to know retention rates for this institutions? Select ONE:
+                    <!-- q5 checkboxes -->
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <div id="q5YesBtn"><input type="checkbox" value=1 class="checkbox">Yes</input></div>
+                        <div id="q5NoBtn"><input type="checkbox" value=2 class="checkbox">No</input></div>
+                    </div>
+                </div> <!-- q5 end -->
+
+        </div> <!-- preference questions end -->
+
+        <div> <!-- money questions-->
+            <div id="money"> <h2>Money:</h2>
+
+            <li> <!-- q6 start -->
+            <div class="questions" id="q6">Is it important to know how much (on average) tuition, fees, books, and other supplies will cost? Select ONE:
+                <!-- q6 checkboxes -->
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                    <div id="q6YesBtn"><input type="checkbox" value=1 class="checkbox">Yes</input></div>
+                    <div id="q6NoBtn"><input type="checkbox" value=2 class="checkbox">No</input></div>
                 </div>
-            </div><!-- q1 end -->
-
-
-            <!-- q2 -->
-            <div class="questions" id="q2">On average, what is your level of proficiency in this subject area?
-            <!-- q2buttons -->
-            <div class="btn-group mr-2" role="group" aria-label="First group">
-                <input type="radio" value=1 class="btn btn-secondary">1</input>
-                <input type="radio" value=2 class="btn btn-secondary">2</input>
-                <input type="radio" value=3 class="btn btn-secondary">3</input>
-                <input type="radio" value=4 class="btn btn-secondary">4</input>
-                <input type="radio" value=5 class="btn btn-secondary">5</input>
-                <input type="radio" value=6 class="btn btn-secondary">6</input>
-                <input type="radio" value=7 class="btn btn-secondary">7</input>
-            </div>
-            </div> <!-- q2 end -->
-
-            <!-- q3 -->
-            <div class="questions" id="q3">What is your average level of work enthusiasm (personal investment)?            
-            <!-- q3buttons -->
-            <div class="btn-group mr-2" role="group" aria-label="First group">
-                <input type="radio" value=1 class="btn btn-secondary">1</input>
-                <input type="radio" value=2 class="btn btn-secondary">2</input>
-                <input type="radio" value=3 class="btn btn-secondary">3</input>
-                <input type="radio" value=4 class="btn btn-secondary">4</input>
-                <input type="radio" value=5 class="btn btn-secondary">5</input>
-                <input type="radio" value=6 class="btn btn-secondary">6</input>
-                <input type="radio" value=7 class="btn btn-secondary">7</input>
-            </div>
-            </div> <!-- q3 end -->
-
-        </div><!-- interests end -->
-
-        
-        <!-- location -->
-        <div id="location">
-            <!-- q4 -->
-            <div class= "zip-form">
-                <form>Enter your zip code:
-                </form>
-            </div><!-- q4 end -->
-
-            <!-- q5 -->
-            <div class= "commute-form">
-                <form>How far are you willing to commute?
-                </form>
-            </div><!-- q5 end -->
-
-            <!-- q6 -->
-            <div class="questions" id="q6">To what extent are you willing to relocate?
-                    <!-- q6buttons -->
-            <div class="btn-group mr-2" role="group" aria-label="First group">
-                    <input type="radio" value=1 class="btn btn-secondary">1</input>
-                    <input type="radio" value=2 class="btn btn-secondary">2</input>
-                    <input type="radio" value=3 class="btn btn-secondary">3</input>
-                    <input type="radio" value=4 class="btn btn-secondary">4</input>
-                    <input type="radio" value=5 class="btn btn-secondary">5</input>
-                    <input type="radio" value=6 class="btn btn-secondary">6</input>
-                    <input type="radio" value=7 class="btn btn-secondary">7</input>
-            </div>
             </div> <!-- q6 end -->
-        </div><!-- location end -->
-        
-        <!-- money -->
-        <div id="money">
-            <!-- q7 -->
-            <div id="q7">What is the average amount (in USD) that you are willing to pay in tuition per semester/anum?
-            </div> <!-- q7 -->
 
-            <!-- q8 -->
-            <div class="questions" id="q8">To what extant is money of concern to you?
-                    <!-- q8buttons -->
-            <div class="btn-group mr-2" role="group" aria-label="First group">
-                    <input type="radio" value=1 class="btn btn-secondary">1</input>
-                    <input type="radio" value=2 class="btn btn-secondary">2</input>
-                    <input type="radio" value=3 class="btn btn-secondary">3</input>
-                    <input type="radio" value=4 class="btn btn-secondary">4</input>
-                    <input type="radio" value=5 class="btn btn-secondary">5</input>
-                    <input type="radio" value=6 class="btn btn-secondary">6</input>
-                    <input type="radio" value=7 class="btn btn-secondary">7</input>
-            </div>
+            <li><!-- q7 start-->
+            <div class="questions" id="q7"> How much are you willing/expecting to pay in tuition per year? Choose ONE from the options below.
+                    <!-- q7 checkboxes -->
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                    <div id="q7YesBtn"><input type="checkbox" value=1 class="checkbox">1</input></div>
+                    <div id="q7NoBtn"><input type="checkbox" value=2 class="checkbox">2</input></div>
+                    <div id="q7YesBtn"><input type="checkbox" value=3 class="checkbox">3</input></div>
+                    <div id="q7NoBtn"><input type="checkbox" value=4 class="checkbox">4</input></div>
+                    <div id="q7YesBtn"><input type="checkbox" value=5 class="checkbox">5</input></div>
+                    <div id="q7NoBtn"><input type="checkbox" value=6 class="checkbox">6</input></div>
+                </div>
+            </div> <!-- q7 end -->
+
+            <li><!-- q8 start-->
+            <div class="questions" id="q8">Are you interested in learning more about financial aid, scholarships, student loans (if available) at your perspective school(s)? Select ONE:
+                <!-- q8 checkboxes -->
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                    <div id="q8YesBtn"><input type="checkbox" value=1 class="checkbox">Yes</input></div>
+                    <div id="q8NoBtn"><input type="checkbox" value=2 class="checkbox">No</input></div>
+                </div>
             </div> <!-- q8 end -->
-
-            <!-- q9 -->
-            <div class="questions" id="q9">To what extent do you think money will be the deciding factor in when, whether and which school you attend?
-                    <!-- q9buttons -->
-            <div class="btn-group mr-2" role="group" aria-label="First group">
-                    <input type="radio" value=1 class="btn btn-secondary">1</input>
-                    <input type="radio" value=2 class="btn btn-secondary">2</input>
-                    <input type="radio" value=3 class="btn btn-secondary">3</input>
-                    <input type="radio" value=4 class="btn btn-secondary">4</input>
-                    <input type="radio" value=5 class="btn btn-secondary">5</input>
-                    <input type="radio" value=6 class="btn btn-secondary">6</input>
-                    <input type="radio" value=7 class="btn btn-secondary">7</input>
-            </div>
-            </div> <!-- q9 end -->
-
-            <!-- q10-->
-            <div class="questions" id="q10">How concerned are you about being able to afford the cost of living while attending school?
-                    <!-- q9buttons -->
-            <div class="btn-group mr-2" role="group" aria-label="First group">
-                    <input type="radio" value=1 class="btn btn-secondary">1</input>
-                    <input type="radio" value=2 class="btn btn-secondary">2</input>
-                    <input type="radio" value=3 class="btn btn-secondary">3</input>
-                    <input type="radio" value=4 class="btn btn-secondary">4</input>
-                    <input type="radio" value=5 class="btn btn-secondary">5</input>
-                    <input type="radio" value=6 class="btn btn-secondary">6</input>
-                    <input type="radio" value=7 class="btn btn-secondary">7</input>
-            </div>
-            </div> <!-- q10 end -->
-
-            <!-- q11 -->
-            <div class="questions" id="q11">How important is it that you have access to scholrships?
-                    <!-- q11buttons -->
-            <div class="btn-group mr-2" role="group" aria-label="First group">
-                    <input type="radio" value=1 class="btn btn-secondary">1</input>
-                    <input type="radio" value=2 class="btn btn-secondary">2</input>
-                    <input type="radio" value=3 class="btn btn-secondary">3</input>
-                    <input type="radio" value=4 class="btn btn-secondary">4</input>
-                    <input type="radio" value=5 class="btn btn-secondary">5</input>
-                    <input type="radio" value=6 class="btn btn-secondary">6</input>
-                    <input type="radio" value=7 class="btn btn-secondary">7</input>
-            </div>
-            </div> <!-- q11 end -->
-
-            <!-- q12 -->
-            <div class="questions" id="q12">How important is it that you have access to student loans?
-                    <!-- q12buttons -->
-            <div class="btn-group mr-2" role="group" aria-label="First group">
-                    <input type="radio" value=1 class="btn btn-secondary">1</input>
-                    <input type="radio" value=2 class="btn btn-secondary">2</input>
-                    <input type="radio" value=3 class="btn btn-secondary">3</input>
-                    <input type="radio" value=4 class="btn btn-secondary">4</input>
-                    <input type="radio" value=5 class="btn btn-secondary">5</input>
-                    <input type="radio" value=6 class="btn btn-secondary">6</input>
-                    <input type="radio" value=7 class="btn btn-secondary">7</input>
-            </div>
-            </div> <!-- q12 end -->
-
-            <!-- q13 -->
-            <div class="questions" id="q13">How important is it that you have access to financial aid?
-                    <!-- q13buttons -->
-            <div class="btn-group mr-2" role="group" aria-label="First group">
-                    <input type="radio" value=1 class="btn btn-secondary">1</input>
-                    <input type="radio" value=2 class="btn btn-secondary">2</input>
-            </div> <!-- q13 end -->       
-        
-        </div><!-- money end -->
+            
+        </div> <!-- money questions end-->
+        </ol>
+    </div><!-- all questions end -->
     
+    <!-- submit button -->
+        <div id="submit"> <p>Check above to ensure that you have answered each question, and have checked 
+            only ONE box for each question, then click on the submit button to view your results:</p>
+            <button id="submitBtn">Submit</button>
+        </div>
+    <!-- submit button ends-->
+
     </div> <!-- main container end-->
-    
+
+    <!-- footer -->
+    <footer><h3>Disclaimer:</h3> <p>This application is in its beta phase. Find My Fit is working on improving the experience and produce that we are aiming to provide.
+        Find My Fit aims to show prospective students a sample of the school options that they have available to them, based on their responses to this beta phase quiz. 
+        Find My Fit encourages prospective students to follow up our recommendations with addequate research before making a decision on which 
+        school they untimately attend.</p> 
+        <p>Find My Fit uses third party resources including APIs and developer libraries and databases to source and provide user/developer data.</p>
+        <p>Updated By: Find My Fit 2019</p>
+    </footer>
+   
     <!-- footer -->
     <footer>This is a footer</footer>
     <script>
@@ -441,171 +380,55 @@
   //--12,000
 
 
-        </script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
-<script>
-    var qa1 = "";
-    var qa2 = "";
-    var qa3 = "";
-    var qa4 = "";
-    var qa5 = "";
-    var qa6 = "";
-    var qa7 = "";
-    var qa8 = "";
-    var qa9 = "";
-    var qa10 = "";
-    var qa11 = "";
-    var qa12 = "";
-    var qa13 = "";
-    var b1 = false;
-    var b2 = false;
-    var b3 = false;
-    var b4 = false;
-    var b5 = false;
-    var b6 = false;
-    var b7 = false;
-    var b8 = false;
-    var b9 = false;
-    var b10 = false;
-    var b11 = false;
-    var b12 = false;
-    var b13 = false;
 
-    // $("#dropdownMenuButton").on("click", function(event){
-    //     qa1 = this.attr("value");
-    // });
-    $("#q2").on("click", function(event){
-        qa2 = this.attr("value");
-    });
-    $("#q3").on("click", function(event){
-        qa3 = this.attr("value");
-    });
-    $("#q4").on("click", function(event){
-        qa4 = this.attr("value");
-    });
-    $("#q5").on("click", function(event){
-        qa5 = this.attr("value");
-    });
-    $("#q6").on("click", function(event){
-        qa6 = this.attr("value");
-    });
-    $("#q7").on("click", function(event){
-        qa7 = this.attr("value");
-    });
-    $("#q8").on("click", function(event){
-        qa8 = this.attr("value");
-    });
-    $("#q9").on("click", function(event){
-        qa9 = this.attr("value");
-    });
-    $("#q10").on("click", function(event){
-        qa10 = this.attr("value");
-    });
-    $("#q11").on("click", function(event){
-        q1a1 = this.attr("value");
-    });
-    $("#q12").on("click", function(event){
-        qa12 = this.attr("value");
-    });
-    $("#q13").on("click", function(event){
-        qa13 = this.attr("value");
-    });
-    if (qa1>4){
-        b1=true;
-    }; 
-    if (qa2>4){
-        b2=true;
-    }; 
-    if (qa3>4){
-        b3=true;
-    }; 
-    if (qa4>4){
-        b4=true;
-    }; 
-    if (qa5>4){
-        b5=true;
-    }; 
-    if (qa6>4){
-        b6=true;
-    }; 
-    if (qa7>4){
-        b7=true;
-    }; 
-    if (qa8>4){
-        b8=true;
-    }; 
-    if (qa9>4){
-        b9=true;
-    }; 
-    if (qa10>4){
-        b10=true;
-    };
-    if (qa11>4){
-        b11=true;
-    };
-    if (qa12>4){
-        b12=true;
-    };
-    if (qa13>4){
-        b13=true;
-    };
-
-
-
-</script>
-     <script
-     src="https://code.jquery.com/jquery-3.4.1.min.js"
-     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-     crossorigin="anonymous"></script>
-     <script>
-         
-         var cityn = "atlanta";
-         var subject = "mathematics";
-          var queryURL = `https://api.data.gov/ed/collegescorecard/v1/schools/nearest.json?api_key=HNg7UV31G0EyV08Fh2zkZBi1WNM1XffC3ttbfbw5&school.city=${cityn}&2017.academics.program.bachelors.${subject}=1`;
- 
-       
- 
-     $.ajax({
-       url: queryURL,
-       method: "GET"
-     }).then((response)=>{
-         console.log(response.results);
-         for (var i = 0; i < response.results.length; i++) {
-           //[7].school.name
-           var school
-           console.log(response.results[i].school.name);
-           var Schoolname = response.results[i].school.name;
-        //    console.log(response.results[i].school.city);
-           var SchoolCSZ = response.results[i].school.city+", "+response.results[i].school.state+" "+response.results[i].school.zip;
-        //    console.log(response.results[i].school.state);
-           console.log(SchoolCSZ);
-        //    var SchoolDebtAvg = response.results[i].latest.aid.cumulative_debt.90th_percentile;
-           console.log(SchoolDebtAvg);
-         };
- 
-     });
- 
- 
- 
- 
-       /*
-     var school = "atlanta";
-          var queryURL = `https://api.data.gov/Treasury/collegescorecard/v1/schools/nearest.json?api_key=HNg7UV31G0EyV08Fh2zkZBi1WNM1XffC3ttbfbw5&school.city=atlanta`;
-         
- 
- 
-     $.ajax({
-       url: queryURL,
-       method: "GET"
-     }).then((response)=>{
-         console.log(response);
-     });
- */
- 
- 
-         </script>
- 
 </html>
+
+<!----Alex added this and I dont know if we should get rid of it yet:
+
+<div class="dropdown">Which of the following is a subject area you enjoy (most enjoy)?
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Sub Area (dropdown not yet working)
+    </button>
+</div>
+
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" value="agriculture">Agriculture</a>
+    <a class="dropdown-item" value="architecture">Architecture</a>
+    <a class="dropdown-item" value="biological">Biology</a>
+    <a class="dropdown-item" value="business_marketing">Business Marketing</a>
+    <a class="dropdown-item" value="communication">Communication</a>
+    <a class="dropdown-item" value="communications_technology">communications Technology</a>
+    <a class="dropdown-item" value="computer">Computer Science</a>
+    <a class="dropdown-item" value="construction">Construction</a>
+    <a class="dropdown-item" value="education">Education</a>
+    <a class="dropdown-item" value="engineering">Engineering</a>
+    <a class="dropdown-item" value="engineering_technology">Engineering Technology</a>
+    <a class="dropdown-item" value="english">English</a>
+    <a class="dropdown-item" value="ethnic_cultural_gender">Ethnic Studies</a>
+    <a class="dropdown-item" value="family_consumer_science">Family Science</a>
+    <a class="dropdown-item" value="health">Health</a>
+    <a class="dropdown-item" value="history">History</a>
+    <a class="dropdown-item" value="humanities">Humanities</a>
+    <a class="dropdown-item" value="language">Language</a>
+    <a class="dropdown-item" value="legal">Legal</a>
+    <a class="dropdown-item" value="library">Library</a>
+    <a class="dropdown-item" value="mathematics">Mathematics</a>
+    <a class="dropdown-item" value="mechanic_repair_technology">Mechanic Repair Technology</a>
+    <a class="dropdown-item" value="military">Military</a>
+    <a class="dropdown-item" value="multidiscipline">Multidiscipline</a>
+    <a class="dropdown-item" value="parks_recreation_fitness">Parks & Recreation & Fitness</a>
+    <a class="dropdown-item" value="personal_culinary">Culinary</a>
+    <a class="dropdown-item" value="philosophy_religious">Philosophy & Religion</a>
+    <a class="dropdown-item" value="physical_science">Physical Science</a>
+    <a class="dropdown-item" value="precision_production">Precision Production</a>
+    <a class="dropdown-item" value="psychology">Psychology</a>
+    <a class="dropdown-item" value="public_administration_social_service">Public Administration Social Service</a>
+    <a class="dropdown-item" value="resources">Resources</a>
+    <a class="dropdown-item" value="science_technology">Science Technology</a>
+    <a class="dropdown-item" value="security_law_enforcement">Security & Law Enforcement</a>
+    <a class="dropdown-item" value="social_science">Social Science</a>
+    <a class="dropdown-item" value="theology_religious_vocation">Theology and Religious Vocation</a>
+    <a class="dropdown-item" value="transportation">Transportation</a>
+    <a class="dropdown-item" value="visual_performing">Visual Performing</a>
+</div> -->

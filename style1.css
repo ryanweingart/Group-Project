@@ -174,25 +174,6 @@ margin:5px;
     transform: scale(1.25);
 }
 
-#chatContainer{
-    width: 90%;
-    color: dodgerblue;
-    margin: 15px;
-    padding: 20px;
-    font-weight: bold;
-}
-
-#messages{
-    border: 
-}
-
-#chatInput{
-    width: 90%;
-    color: dodgerblue;
-    margin: 15px;
-    padding: px;
-}
-
 footer{
     margin: 10px;
     padding: 20px;
@@ -218,6 +199,7 @@ transform: scale(1.05);
 
 #cardBody{
     border: solid 2px dodgerblue;
+    margin: 10px;
 }
  
 #title{

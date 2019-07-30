@@ -62,40 +62,5 @@ $(document).ready(function() { //Start of document ready
 
     });
 
-
-    // $("#userForm").html("");
-    // $("#quiz").show(); // need to change according to the div ids
-    // $("#messages").empty();
-        
-    //Collects the user messages
-    $("#chatInput").keypress("keypress", function(event){
-        //If not press return then ignore
-        if(event.which != "13"){
-            return;
-        }
-        //References input using id
-        chatText=$("#chatInput").val().trim();
-        //Pushes each new message to the messages div
-        database.ref("/messages/").push({
-            chatMessage: username + ": " + chatText,
-        });
-        
-        //Collects the value of the chat input
-        $("#chatInput").val("");
-        event.preventDefault();//Prevents page reload before form submit
-    });
-
-    //Retrieves last five messages
-    chatMessageRef.limitToLast(5).on("value", function(snapshot) { 
-        
-        //Empties messages
-        $("#messages").empty();
-                
-        //Adds 5 messages
-        snapshot.forEach(function(childSnapshot) {
-            $("#messages").append(`${childSnapshot.val().chatMessage} <br>`);
-        });
-    });
-
 });
 //Firebase end/////////////////////////////////////////////////////////////////////////////////////////

@@ -58,6 +58,13 @@
     border-bottom: 1px solid dodgerblue;
 }
 
+#userInfo{
+    width: 50%;
+    color: dodgerblue;
+    margin: 15px;
+    padding: 20px;
+}
+
 #startBtn{
     background-color: dodgerblue;
     font-weight: bolder;
@@ -116,7 +123,7 @@ li{
 .btn-group{
     width: 100%;
     margin-top: 10px;
-    padding:0px;
+    padding:10px;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
@@ -128,8 +135,9 @@ li{
 }
 
 .dropdown-menu button{
-    border:0px;
+    padding:10px;
 }
+
 
 .checkbox{
 width:20px;
@@ -151,7 +159,7 @@ margin:5px;
 }
 
 #submitBtn{
-    width: 20%;
+
     align-self: center;
     margin: 10px;
     padding: 5px;
@@ -166,9 +174,28 @@ margin:5px;
     transform: scale(1.25);
 }
 
+#chatContainer{
+    width: 90%;
+    color: dodgerblue;
+    margin: 15px;
+    padding: 20px;
+    font-weight: bold;
+}
+
+#messages{
+    border: 
+}
+
+#chatInput{
+    width: 90%;
+    color: dodgerblue;
+    margin: 15px;
+    padding: px;
+}
+
 footer{
     margin: 10px;
-    padding: 10px;
+    padding: 20px;
     text-align: center;
     border-top: dodgerblue 2px solid;
     font-size: 10px;
@@ -176,4 +203,33 @@ footer{
 
 footer h3{
   font-size: 15px;
+}
+
+#results{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap; 
+    font-weight: bolder;
+}
+
+#results:hover{
+transform: scale(1.05);
+}
+
+#cardBody{
+    border: solid 2px dodgerblue;
+}
+ 
+#title{
+    border-bottom: dotted 1px dodgerblue;
+    font-size: 30px;
+}
+
+#text{
+    line-height: 2cm;
+}
+
+#redo{
+    text-align: center;
+    margin-top: 20px;
 }

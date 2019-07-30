@@ -199,18 +199,7 @@ function cscard(event) {
 
         console.log(filteredSchools[i].school.religious_affiliation);
     
-        $("#allQuestions").replaceWith(`<div id="results"> 
-                                          <div id="redo"> Refresh the page to redo the quiz.</div>
-                                          <div class="card" data-name ="${Schoolname}">
-                                          <div id="cardBody" class="card-body">
-                                          <div id="title" class="card-title"> ${Schoolname}</div>
-                                          <div id="text" class="card-text"> Location: ${SchoolCSZ}<br>
-                                          Average student debt: $${SchoolDebtAvg}
-                                          <br> 
-                                          Median student earning in 10yrs: $${SchoolEarningMed}</div> 
-                                          </div>
-                                         
-                                          </div>`);
+        $("#allQuestions").replaceWith(`<div id="results"></div>`);
 
       $("#results").append(`<div id="results"> 
                                         <div class="card" data-name ="${Schoolname}">
